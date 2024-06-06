@@ -19,11 +19,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed")
 	float MovementSpeed = 100.0f;
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -32,6 +27,10 @@ public:
 	virtual void SetSpeed_Implementation(float NewSpeed) override;
 
 	virtual void ResetSpeed_Implementation() override;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY()

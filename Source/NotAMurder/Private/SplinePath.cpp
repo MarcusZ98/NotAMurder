@@ -8,9 +8,6 @@ ASplinePath::ASplinePath()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	OriginalSpeed = MovementSpeed;
-
 }
 
 // Called when the game starts or when spawned
@@ -27,18 +24,4 @@ void ASplinePath::Tick(float DeltaTime)
 
 }
 
-float ASplinePath::GetSpeed_Implementation()
-{
-	return MovementSpeed;
-}
-
-void ASplinePath::SetSpeed_Implementation(float NewSpeed)
-{
-	MovementSpeed = NewSpeed;
-}
-
-void ASplinePath::ResetSpeed_Implementation()
-{
-	MovementSpeed = OriginalSpeed;
-}
 

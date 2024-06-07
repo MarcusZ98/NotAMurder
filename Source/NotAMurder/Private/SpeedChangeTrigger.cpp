@@ -13,15 +13,17 @@ ASpeedChangeTrigger::ASpeedChangeTrigger()
 
 	// Create the collision box component
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("AreaTrigger"));
-    
-	// Attach the collision box to the root component
-	RootComponent = CollisionBox;
-    
+	
 	// Set the default size of the collision box (optional)
 	CollisionBox->InitBoxExtent(FVector(50.f, 50.f, 50.f));
     
 	// Enable the collision box to be visible in the editor and game
 	CollisionBox->SetCollisionProfileName(TEXT("OverlapAll"));
+
+	// Attach the collision box to the root component
+	CollisionBox->SetupAttachment(RootComponent);
+
+	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &ASpeedChangeTrigger::OnOverlapBegin);
 
 }
 
@@ -29,8 +31,6 @@ ASpeedChangeTrigger::ASpeedChangeTrigger()
 void ASpeedChangeTrigger::BeginPlay()
 {
 	Super::BeginPlay();
-
-	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &ASpeedChangeTrigger::OnOverlapBegin);
 }
 
 // Called every frame
@@ -43,12 +43,10 @@ void ASpeedChangeTrigger::Tick(float DeltaTime)
 void ASpeedChangeTrigger::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Speed changed"));
 
 	if(OtherActor->GetClass()->ImplementsInterface(USpeedable::StaticClass()))
 	{
-		ISpeedable::Execute_SetSpeed(OtherActor, MovementSpeed);
-		UE_LOG(LogTemp, Warning, TEXT("Speed changed"));
+		ISpeedable::Execute_MultiplySpeed(OtherActor, 5);
 	}
 }
 

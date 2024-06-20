@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/SplineComponent.h"
 #include "SplinePath.generated.h"
 
 UCLASS()
@@ -19,8 +20,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
-	
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Spline component
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
+	USplineComponent* SplineComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
+	UStaticMeshComponent *SplineMefdsh;
 };

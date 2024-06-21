@@ -36,7 +36,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
 	float MovementSpeed = 500.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom")
 	ECharacterType CharacterType = ECharacterType::Default;
 
 private:

@@ -39,8 +39,16 @@ public:
 	AActor* AttachedActor = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
-	AEnemyCharacter* AttachedEnemy = nullptr;
+	TSubclassOf<AEnemyCharacter> EnemyClass;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	bool bContinueSpawning = false;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "bContinueSpawning"))
+	float SpawnInterval = 2.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "bContinueSpawning"))
+	int32 MaxSpawnCount = 5;
+	
 	
 };

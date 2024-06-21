@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "NotAMurder/Enums/CharacterType.h"
+#include "NotAMurder/Interfaces/Speedable.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS()
-class NOTAMURDER_API ABaseCharacter : public ACharacter
+class NOTAMURDER_API ABaseCharacter : public ACharacter, public ISpeedable
 {
 	GENERATED_BODY()
 
@@ -25,5 +27,21 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual float GetOriginalSpeed_Implementation() override;
+	virtual float GetCurrentSpeed_Implementation() override;
+	virtual void SetSpeed_Implementation(float NewSpeed) override;
+	virtual void MultiplySpeed_Implementation(float Multiplier) override;
+	virtual void ResetSpeed_Implementation() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	float MovementSpeed = 500.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	ECharacterType CharacterType = ECharacterType::Default;
+
+private:
+	
+    UPROPERTY(BlueprintReadWrite, Category = "Custom", meta = (AllowPrivateAccess = "true"))
+	float OriginalMovementSpeed;
 
 };

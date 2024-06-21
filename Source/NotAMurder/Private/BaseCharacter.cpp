@@ -4,7 +4,7 @@
 #include "BaseCharacter.h"
 
 // Sets default values
-ABaseCharacter::ABaseCharacter()
+ABaseCharacter::ABaseCharacter(): OriginalMovementSpeed(MovementSpeed)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -30,5 +30,30 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+float ABaseCharacter::GetOriginalSpeed_Implementation()
+{
+	return OriginalMovementSpeed;
+}
+
+float ABaseCharacter::GetCurrentSpeed_Implementation()
+{
+	return MovementSpeed;
+}
+
+void ABaseCharacter::SetSpeed_Implementation(float NewSpeed)
+{
+	MovementSpeed = NewSpeed;
+}
+
+void ABaseCharacter::MultiplySpeed_Implementation(float Multiplier)
+{
+	MovementSpeed *= Multiplier;
+}
+
+void ABaseCharacter::ResetSpeed_Implementation()
+{
+	MovementSpeed = OriginalMovementSpeed;
 }
 

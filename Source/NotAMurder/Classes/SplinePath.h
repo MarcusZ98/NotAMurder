@@ -3,9 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BaseCharacter.h"
+#include "EnemyCharacter.h"
 #include "GameFramework/Actor.h"
 #include "Components/SplineComponent.h"
+#include "NotAMurder/Enums/CharacterType.h"
 #include "SplinePath.generated.h"
+
 
 UCLASS()
 class NOTAMURDER_API ASplinePath : public AActor
@@ -28,6 +32,15 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
 	USplineComponent* SplineComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
-	UStaticMeshComponent *SplineMefdsh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	ECharacterType CharacterType = ECharacterType::Default;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player", meta = (EditCondition = "CharacterType == ECharacterType::Player"))
+	AActor* AttachedActor = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	AEnemyCharacter* AttachedEnemy = nullptr;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	
 };

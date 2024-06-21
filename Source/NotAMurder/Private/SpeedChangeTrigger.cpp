@@ -22,9 +22,6 @@ ASpeedChangeTrigger::ASpeedChangeTrigger()
 
 	// Attach the collision box to the root component
 	CollisionBox->SetupAttachment(RootComponent);
-
-	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &ASpeedChangeTrigger::OnOverlapBegin);
-
 }
 
 // Called when the game starts or when spawned
@@ -40,13 +37,4 @@ void ASpeedChangeTrigger::Tick(float DeltaTime)
 
 }
 
-void ASpeedChangeTrigger::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-
-	if(OtherActor->GetClass()->ImplementsInterface(USpeedable::StaticClass()))
-	{
-		ISpeedable::Execute_MultiplySpeed(OtherActor, 5);
-	}
-}
 

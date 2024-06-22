@@ -13,7 +13,6 @@ ASplinePath::ASplinePath()
 	// Create and initialize the spline component
 	SplineComponent = CreateDefaultSubobject<USplineComponent>(TEXT("SplineComponent"));
 	RootComponent = SplineComponent; // Set the spline component as the root component
-	
 }
 
 // Called when the game starts or when spawned

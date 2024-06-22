@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
+#include "NotAMurder/Enums/CharacterType.h"
 #include "SpeedChangeTrigger.generated.h"
 
 UCLASS()
@@ -20,19 +21,30 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	TArray<ECharacterType> CharacterTypesToEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	bool bUsePercentageMovement = false;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "!bUsePercentageMovement"))
+	float NewMovementSpeed = 500.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "bUsePercentageMovement"))
+	float PercentageMovement = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	bool bUseSmoothTransition = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "bUseSmoothTransition"))
+	float TransitionDuration = 1.0f;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	UBoxComponent* CollisionBox;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Speed")
-	float MovementSpeed = 10;
-
-	UFUNCTION()
-	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
-						UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, 
-						bool bFromSweep, const FHitResult& SweepResult);
 
 };

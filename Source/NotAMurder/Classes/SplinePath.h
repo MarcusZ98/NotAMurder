@@ -3,8 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BaseCharacter.h"
+#include "EnemyCharacter.h"
 #include "GameFramework/Actor.h"
+#include "Components/SplineComponent.h"
+#include "NotAMurder/Enums/CharacterType.h"
 #include "SplinePath.generated.h"
+
 
 UCLASS()
 class NOTAMURDER_API ASplinePath : public AActor
@@ -19,8 +24,31 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
-	
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Spline component
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
+	USplineComponent* SplineComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	ECharacterType CharacterType = ECharacterType::Default;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player", meta = (EditCondition = "CharacterType == ECharacterType::Player"))
+	AActor* AttachedActor = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	TSubclassOf<AEnemyCharacter> EnemyClass;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	bool bContinueSpawning = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "bContinueSpawning"))
+	float SpawnInterval = 2.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "bContinueSpawning"))
+	int32 MaxSpawnCount = 5;
+	
+	
 };

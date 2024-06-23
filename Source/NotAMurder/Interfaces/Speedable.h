@@ -31,9 +31,13 @@ public:
 	virtual float GetCurrentSpeed_Implementation() = 0;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Speed")
-	void SetSpeed(float NewSpeed);
-	virtual void SetSpeed_Implementation(float NewSpeed) = 0;
+	void SetCurrentSpeed(float NewSpeed);
+	virtual void SetCurrentSpeed_Implementation(float NewSpeed) = 0;
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Speed")
+	void SetOriginalSpeed(float NewSpeed);
+	virtual void SetOriginalSpeed_Implementation(float NewSpeed) = 0;
+	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Speed")
 	void MultiplySpeed(float Multiplier);
 	virtual void MultiplySpeed_Implementation(float Multiplier) = 0;

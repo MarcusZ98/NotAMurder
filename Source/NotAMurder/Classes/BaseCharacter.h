@@ -29,7 +29,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float GetOriginalSpeed_Implementation() override;
 	virtual float GetCurrentSpeed_Implementation() override;
-	virtual void SetSpeed_Implementation(float NewSpeed) override;
+	virtual void SetCurrentSpeed_Implementation(float NewSpeed) override;
+	virtual void SetOriginalSpeed_Implementation(float NewSpeed) override;
 	virtual void MultiplySpeed_Implementation(float Multiplier) override;
 	virtual void ResetSpeed_Implementation() override;
 

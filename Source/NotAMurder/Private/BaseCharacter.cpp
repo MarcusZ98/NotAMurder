@@ -15,7 +15,6 @@ ABaseCharacter::ABaseCharacter(): OriginalMovementSpeed(MovementSpeed),CurrentHe
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

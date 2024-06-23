@@ -36,6 +36,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
 	ECharacterType CharacterType = ECharacterType::Default;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	bool bOverrideSpeed = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "bOverrideSpeed"))
+	float OverriddenSpeed = 1000.0f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player", meta = (EditCondition = "CharacterType == ECharacterType::Player"))
 	AActor* PlayerParent = nullptr;
 

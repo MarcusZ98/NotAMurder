@@ -15,7 +15,6 @@ ABaseCharacter::ABaseCharacter(): OriginalMovementSpeed(MovementSpeed),CurrentHe
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -42,9 +41,15 @@ float ABaseCharacter::GetCurrentSpeed_Implementation()
 	return MovementSpeed;
 }
 
-void ABaseCharacter::SetSpeed_Implementation(float NewSpeed)
+void ABaseCharacter::SetCurrentSpeed_Implementation(float NewSpeed)
 {
 	MovementSpeed = NewSpeed;
+}
+
+void ABaseCharacter::SetOriginalSpeed_Implementation(float NewSpeed)
+{
+	OriginalMovementSpeed = NewSpeed;
+	MovementSpeed = OriginalMovementSpeed;
 }
 
 void ABaseCharacter::MultiplySpeed_Implementation(float Multiplier)

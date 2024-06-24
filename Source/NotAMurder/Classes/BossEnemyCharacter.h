@@ -13,5 +13,4 @@ UCLASS()
 class NOTAMURDER_API ABossEnemyCharacter : public AEnemyCharacter
 {
 	GENERATED_BODY()
-	
 };

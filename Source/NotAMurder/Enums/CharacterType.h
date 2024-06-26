@@ -7,7 +7,7 @@
 UENUM(BlueprintType)
 enum class ECharacterType : uint8
 {
-	Default UMETA(DisplayName = "Default"),
+	None UMETA(DisplayName = "None"),
 	Player UMETA(DisplayName = "Player"),
 	Enemy UMETA(DisplayName = "Enemy")
 };

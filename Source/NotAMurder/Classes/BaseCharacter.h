@@ -43,7 +43,7 @@ public:
 	
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom")
-	ECharacterType CharacterType = ECharacterType::Default;
+	ECharacterType CharacterType = ECharacterType::None;
 	
 private:
 	

@@ -34,7 +34,7 @@ public:
 	USplineComponent* SplineComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
-	ECharacterType CharacterType = ECharacterType::Default;
+	ECharacterType CharacterType = ECharacterType::None;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
 	bool bOverrideSpeed = false;
@@ -55,26 +55,9 @@ public:
 	AActor* EnemyParent = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
-	bool bSpawnGroups = false;
+	int32 GroupSize = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "bSpawnGroups"))
-	int32 GroupSize = 5;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "bSpawnGroups"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
 	float DistanceBetweenEnemies = 150;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
-	bool bOnlySpawnOnce = false;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "!bOnlySpawnOnce"))
-	float SpawnInterval = 2.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "!bOnlySpawnOnce"))
-	int32 MaxSpawnCount = 3;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "!bOnlySpawnOnce"))
-	bool bSpawnWaves = false;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Spawning", meta = (EditCondition = "bSpawnWaves"))
-	float WaveInterval = 3.0f;
 };

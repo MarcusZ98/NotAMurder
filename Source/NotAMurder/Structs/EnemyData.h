@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Engine/UserDefinedStruct.h"
-#include "DamageData.generated.h"
+#include "EnemyData.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class NOTAMURDER_API UDamageData : public UUserDefinedStruct
+class NOTAMURDER_API UEnemyData : public UUserDefinedStruct
 {
 	GENERATED_BODY()
 	

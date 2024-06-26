@@ -49,7 +49,7 @@ public:
 	APlayerCharacter* PlayerCharacter;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
-	TSubclassOf<AEnemyCharacter> EnemyClass;
+	TSubclassOf<AEnemyCharacter> EnemyClass = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
 	AActor* EnemyParent = nullptr;

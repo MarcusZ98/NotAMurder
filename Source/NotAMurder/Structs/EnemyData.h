@@ -3,15 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/UserDefinedStruct.h"
 #include "EnemyData.generated.h"
 
 /**
  * 
  */
-UCLASS()
-class NOTAMURDER_API UEnemyData : public UUserDefinedStruct
+USTRUCT(BlueprintType)
+struct FMyStruct
 {
 	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float Health = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float MovementSpeed = 500.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float DamageMultiplier = 1.0f;
 	
 };

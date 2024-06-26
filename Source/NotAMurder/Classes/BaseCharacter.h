@@ -5,11 +5,12 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "NotAMurder/Enums/CharacterType.h"
+#include "NotAMurder/Interfaces/Character_Interface.h"
 #include "NotAMurder/Interfaces/Speedable.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS()
-class NOTAMURDER_API ABaseCharacter : public ACharacter, public ISpeedable
+class NOTAMURDER_API ABaseCharacter : public ACharacter, public ISpeedable, public ICharacter_Interface
 {
 	GENERATED_BODY()
 
@@ -44,6 +45,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom")
 	ECharacterType CharacterType = ECharacterType::None;
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	ECharacterType GetCharacterType_Implementation() override;
 	
 private:
 	

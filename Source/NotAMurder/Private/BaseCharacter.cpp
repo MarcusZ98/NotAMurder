@@ -62,3 +62,8 @@ void ABaseCharacter::ResetSpeed_Implementation()
 	MovementSpeed = OriginalMovementSpeed;
 }
 
+ECharacterType ABaseCharacter::GetCharacterType_Implementation()
+{
+	return CharacterType;
+}
+

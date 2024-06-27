@@ -36,28 +36,48 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
 	ECharacterType CharacterType = ECharacterType::None;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (ToolTip = "Enable this to override the speed of the character"))
 	bool bOverrideSpeed = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "bOverrideSpeed"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "bOverrideSpeed"))
 	float OverriddenSpeed = 1000.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player", meta = (EditCondition = "CharacterType == ECharacterType::Player"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player",
+		meta = (EditCondition = "CharacterType == ECharacterType::Player"),
+		meta = (ToolTip = "Add the player character class here"))
 	AActor* PlayerParent = nullptr;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Player", meta = (EditCondition = "CharacterType == ECharacterType::Player"))
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Custom|Player",
+		meta = (EditCondition = "CharacterType == ECharacterType::Player"))
 	APlayerCharacter* PlayerCharacter;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
+		meta = (ToolTip = "Add the enemy character class here"))
 	TSubclassOf<AEnemyCharacter> EnemyClass = nullptr;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Enemy", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
 	AActor* EnemyParent = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
 	int32 GroupSize = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy|Groups", meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
+		meta = (ToolTip = "Adjust the distance between enemies in the group"))
 	float DistanceBetweenEnemies = 150;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
+		meta = (ToolTip = "Overrides the enemy data set in the enemy class"))
+	bool bOverrideEnemyData = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
+		meta = (EditCondition = "bOverrideEnemyData"))
+	FEnemyData OverriddenEnemyData;
 	
 };

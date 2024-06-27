@@ -10,8 +10,7 @@ AEnemyCharacter::AEnemyCharacter()
 
 	EnemyData.Health = 100.0f;
 	EnemyData.DamageMultiplier = 1.0f;
-	EnemyData.Mesh = nullptr;
-	EnemyData.AnimationBlueprintClass = nullptr;
+	EnemyData.PointsWorth = 1000;
 }
 
 void AEnemyCharacter::KillEnemy_Implementation()

@@ -20,9 +20,5 @@ struct FEnemyData
 	float DamageMultiplier;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	USkeletalMesh* Mesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	TSubclassOf<UAnimInstance> AnimationBlueprintClass;
-
+	int32 PointsWorth;
 };

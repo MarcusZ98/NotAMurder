@@ -38,11 +38,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
 		meta = (ToolTip = "Enable this to override the speed of the character"))
-	bool bOverrideSpeed = false;
+	bool bOverrideCharacterData = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
-		meta = (EditCondition = "bOverrideSpeed"))
-	float OverriddenSpeed = 1000.0f;
+		meta = (EditCondition = "bOverrideCharacterData"))
+	FCharacterData OverridenCharacterData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player",
 		meta = (EditCondition = "CharacterType == ECharacterType::Player"),

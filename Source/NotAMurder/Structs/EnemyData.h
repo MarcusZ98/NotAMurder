@@ -12,13 +12,12 @@ USTRUCT(BlueprintType)
 struct FEnemyData
 {
 	GENERATED_BODY()
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float Health;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float DamageMultiplier;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	int32 PointsWorth;
+
+	FEnemyData(): DamageMultiplier(1.0f), PointsWorth(1000){}
 };

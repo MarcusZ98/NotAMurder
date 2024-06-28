@@ -4,17 +4,18 @@
 #include "BaseCharacter.h"
 
 // Sets default values
-ABaseCharacter::ABaseCharacter(): OriginalMovementSpeed(MovementSpeed),CurrentHealth(MaxHealth)
+ABaseCharacter::ABaseCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	CharacterData.CharacterType = ECharacterType::None;
 }
 
 // Called when the game starts or when spawned
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	OriginalMovementSpeed = CharacterData.MovementSpeed;
 }
 
 // Called every frame
@@ -38,32 +39,38 @@ float ABaseCharacter::GetOriginalSpeed_Implementation()
 
 float ABaseCharacter::GetCurrentSpeed_Implementation()
 {
-	return MovementSpeed;
+	return CharacterData.MovementSpeed;
 }
 
-void ABaseCharacter::SetCurrentSpeed_Implementation(float NewSpeed)
+void ABaseCharacter::SetCurrentSpeed_Implementation(const float NewSpeed)
 {
-	MovementSpeed = NewSpeed;
+	CharacterData.MovementSpeed = NewSpeed;
 }
 
-void ABaseCharacter::SetOriginalSpeed_Implementation(float NewSpeed)
+void ABaseCharacter::SetOriginalSpeed_Implementation(const float NewSpeed)
 {
 	OriginalMovementSpeed = NewSpeed;
-	MovementSpeed = OriginalMovementSpeed;
+	CharacterData.MovementSpeed = OriginalMovementSpeed;
 }
 
-void ABaseCharacter::MultiplySpeed_Implementation(float Multiplier)
+void ABaseCharacter::MultiplySpeed_Implementation(const float Multiplier)
 {
-	MovementSpeed *= Multiplier;
+	CharacterData.MovementSpeed *= Multiplier;
 }
 
 void ABaseCharacter::ResetSpeed_Implementation()
 {
-	MovementSpeed = OriginalMovementSpeed;
+	CharacterData.MovementSpeed = OriginalMovementSpeed;
 }
 
-ECharacterType ABaseCharacter::GetCharacterType_Implementation()
+FCharacterData ABaseCharacter::GetCharacterData_Implementation()
 {
-	return CharacterType;
+	return CharacterData;
+}
+
+void ABaseCharacter::SetCharacterData_Implementation(const FCharacterData& NewData)
+{
+	CharacterData = NewData;
+	OriginalMovementSpeed = CharacterData.MovementSpeed;
 }
 

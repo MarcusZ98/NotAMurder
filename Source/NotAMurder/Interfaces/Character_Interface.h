@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NotAMurder/Structs/CharacterData.h"
 #include "UObject/Interface.h"
 #include "Character_Interface.generated.h"
 
@@ -24,6 +25,10 @@ class NOTAMURDER_API ICharacter_Interface
 public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Character")
-	ECharacterType GetCharacterType();
-	virtual ECharacterType GetCharacterType_Implementation() = 0;
+	FCharacterData GetCharacterData();
+	virtual FCharacterData GetCharacterData_Implementation() = 0;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Character")
+	void SetCharacterData(const FCharacterData& NewData);
+	virtual void SetCharacterData_Implementation(const FCharacterData& NewData) = 0;
 };

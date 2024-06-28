@@ -12,17 +12,12 @@ USTRUCT(BlueprintType)
 struct FEnemyData
 {
 	GENERATED_BODY()
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float Health;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float DamageMultiplier;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	USkeletalMesh* Mesh;
+	int32 PointsWorth;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	TSubclassOf<UAnimInstance> AnimationBlueprintClass;
-
+	FEnemyData(): DamageMultiplier(1.0f), PointsWorth(1000){}
 };

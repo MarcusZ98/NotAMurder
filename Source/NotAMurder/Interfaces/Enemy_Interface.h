@@ -36,6 +36,6 @@ public:
 	virtual void TakeDamage_Implementation(float Damage) = 0;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Enemy")
-	void ApplyNewData(const FEnemyData& NewData);
-	virtual void ApplyNewData_Implementation(const FEnemyData& NewData) = 0;
+	void SetEnemyData(const FEnemyData& NewData);
+	virtual void SetEnemyData_Implementation(const FEnemyData& NewData) = 0;
 };

@@ -5,5 +5,5 @@
 
 
 APlayerCharacter::APlayerCharacter(){
-	CharacterType = ECharacterType::Player;
+	CharacterData.CharacterType = ECharacterType::Player;
 }

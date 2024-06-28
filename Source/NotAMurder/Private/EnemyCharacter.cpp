@@ -6,12 +6,7 @@
 AEnemyCharacter::AEnemyCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	CharacterType = ECharacterType::Enemy;
-
-	EnemyData.Health = 100.0f;
-	EnemyData.DamageMultiplier = 1.0f;
-	EnemyData.Mesh = nullptr;
-	EnemyData.AnimationBlueprintClass = nullptr;
+	CharacterData.CharacterType = ECharacterType::Enemy;
 }
 
 void AEnemyCharacter::KillEnemy_Implementation()
@@ -26,14 +21,10 @@ void AEnemyCharacter::Shoot_Implementation()
 
 void AEnemyCharacter::TakeDamage_Implementation(float Damage)
 {
-	EnemyData.Health -= Damage;
-	if (EnemyData.Health <= 0)
-	{
-		KillEnemy();
-	}
+	
 }
 
-void AEnemyCharacter::ApplyNewData_Implementation(const FEnemyData& NewData)
+void AEnemyCharacter::SetEnemyData_Implementation(const FEnemyData& NewData)
 {
 	EnemyData = NewData;
 }

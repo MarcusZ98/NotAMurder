@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "NotAMurder/Enums/CharacterType.h"
 #include "NotAMurder/Interfaces/Character_Interface.h"
 #include "NotAMurder/Interfaces/Speedable.h"
+#include "NotAMurder/Structs/CharacterData.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS()
@@ -30,28 +30,21 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float GetOriginalSpeed_Implementation() override;
 	virtual float GetCurrentSpeed_Implementation() override;
-	virtual void SetCurrentSpeed_Implementation(float NewSpeed) override;
-	virtual void SetOriginalSpeed_Implementation(float NewSpeed) override;
-	virtual void MultiplySpeed_Implementation(float Multiplier) override;
+	virtual void SetCurrentSpeed_Implementation(const float NewSpeed) override;
+	virtual void SetOriginalSpeed_Implementation(const float NewSpeed) override;
+	virtual void MultiplySpeed_Implementation(const float Multiplier) override;
 	virtual void ResetSpeed_Implementation() override;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom")
-	float MovementSpeed = 500.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Health")
-	float MaxHealth=100;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Health")
-	float CurrentHealth;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Attributes")
+	FCharacterData CharacterData;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom")
-	ECharacterType CharacterType = ECharacterType::None;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Character Attributes")
+	float OriginalMovementSpeed = 100.0f;
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
-	ECharacterType GetCharacterType_Implementation() override;
-	
-private:
-	
-    UPROPERTY(BlueprintReadWrite, Category = "Custom", meta = (AllowPrivateAccess = "true"))
-	float OriginalMovementSpeed;
+	virtual FCharacterData GetCharacterData_Implementation() override;
 
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	virtual void SetCharacterData_Implementation(const FCharacterData& NewData) override;
+	
 };

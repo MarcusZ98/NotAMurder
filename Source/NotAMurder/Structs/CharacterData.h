@@ -25,6 +25,7 @@ struct FCharacterData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	ECharacterType CharacterType;
+	
 
 	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None){}
 };

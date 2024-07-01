@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NiagaraFunctionLibrary.h"
 #include "ProjectileData.generated.h"
 
 /**
@@ -13,8 +14,11 @@ struct FProjectileData
 {
 	GENERATED_BODY()
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	UNiagaraSystem* ProjectileFX;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	UNiagaraSystem* ImpactFX;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float ProjectileSpeed;

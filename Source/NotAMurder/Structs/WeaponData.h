@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ProjectileData.h"
+#include "BaseProjectile.h"
 #include "WeaponData.generated.h"
 
 /**
@@ -20,9 +20,9 @@ struct FWeaponData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes",
 		meta = (tooltip = "Seconds between each shot"))
 	float FireRate;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	FProjectileData ProjectileData;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Attributes")
+	TSubclassOf<ABaseProjectile> ProjectileClass;
 
 	FWeaponData(): DamagePerShot(10), FireRate(0.1f) {}
 };

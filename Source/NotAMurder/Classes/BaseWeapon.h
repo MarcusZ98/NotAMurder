@@ -6,7 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "NotAMurder/Interfaces/Weapon_Interface.h"
 #include "NotAMurder/Structs/WeaponData.h"
-#include "NotAMurder/Structs/ProjectileData.h"
 #include "BaseWeapon.generated.h"
 
 UCLASS()
@@ -29,9 +28,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Attributes")
 	FWeaponData WeaponData;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Attributes")
-	FProjectileData ProjectileData;
-
+	
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	virtual void FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector) override;
 

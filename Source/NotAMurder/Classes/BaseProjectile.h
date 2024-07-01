@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "NotAMurder/Structs/ProjectileData.h"
 #include "BaseProjectile.generated.h"
 
 UCLASS()
@@ -22,5 +23,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Attributes")
+	FProjectileData ProjectileData;
 
 };

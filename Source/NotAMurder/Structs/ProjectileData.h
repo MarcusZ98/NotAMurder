@@ -13,11 +13,16 @@ struct FProjectileData
 {
 	GENERATED_BODY()
 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float ProjectileSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float ProjectileLife;
+
+	
 
 	FProjectileData(): ProjectileSpeed(1000.0f), ProjectileLife(1.0f){}
 };

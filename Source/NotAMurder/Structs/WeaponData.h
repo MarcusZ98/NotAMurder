@@ -17,11 +17,12 @@ struct FWeaponData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	int32 DamagePerShot;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes",
+		meta = (tooltip = "Seconds between each shot"))
 	float FireRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	FProjectileData ProjectileData;
 
-	FWeaponData(): DamagePerShot(10), FireRate(0.1f){}
+	FWeaponData(): DamagePerShot(10), FireRate(0.1f) {}
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BaseCharacter.h"
+#include "Components/SphereComponent.h"
 #include "NotAMurder/Interfaces/Enemy_Interface.h"
 #include "NotAMurder/Structs/EnemyData.h"
 #include "EnemyCharacter.generated.h"
@@ -29,6 +30,9 @@ class NOTAMURDER_API AEnemyCharacter : public ABaseCharacter, public IEnemy_Inte
 public:
 	AEnemyCharacter();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	UStaticMeshComponent* ShootStartLocation;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	FEnemyData EnemyData;
 

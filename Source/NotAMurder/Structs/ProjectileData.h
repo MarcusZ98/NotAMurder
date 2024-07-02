@@ -28,6 +28,6 @@ struct FProjectileData
 
 	
 
-	FProjectileData(): ProjectileSpeed(1000.0f), ProjectileLife(1.0f){}
+	FProjectileData(): ProjectileFX(), ImpactFX(), ProjectileSpeed(1000.0f), ProjectileLife(1.0f) {}
 };
 

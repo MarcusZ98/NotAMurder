@@ -7,7 +7,7 @@
 #include "NotAMurder/Structs/ProjectileData.h"
 #include "BaseProjectile.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class NOTAMURDER_API ABaseProjectile : public AActor
 {
 	GENERATED_BODY()

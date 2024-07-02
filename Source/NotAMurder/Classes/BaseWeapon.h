@@ -8,7 +8,7 @@
 #include "NotAMurder/Structs/WeaponData.h"
 #include "BaseWeapon.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class NOTAMURDER_API ABaseWeapon : public AActor,  public IWeaponInterface
 {
 	GENERATED_BODY()

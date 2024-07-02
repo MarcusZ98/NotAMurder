@@ -7,9 +7,7 @@
 #include "CharacterData.generated.h"
 
 class ABaseWeapon;
-/**
- * 
- */
+
 USTRUCT(BlueprintType)
 struct FCharacterData
 {
@@ -31,5 +29,5 @@ struct FCharacterData
 	TSubclassOf<ABaseWeapon> Weapon;
 	
 
-	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None), Weapon(){}
+	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None), Weapon(nullptr){}
 };

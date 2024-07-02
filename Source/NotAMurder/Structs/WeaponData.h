@@ -6,9 +6,7 @@
 #include "WeaponData.generated.h"
 
 class ABaseProjectile;
-/**
- * 
- */
+
 USTRUCT(BlueprintType)
 struct FWeaponData
 {
@@ -24,5 +22,5 @@ struct FWeaponData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Attributes")
 	TSubclassOf<ABaseProjectile> Projectile;
 
-	FWeaponData(): DamagePerShot(10), FireRate(0.1f), Projectile() {}
+	FWeaponData(): DamagePerShot(10), FireRate(0.1f), Projectile(nullptr) {}
 };

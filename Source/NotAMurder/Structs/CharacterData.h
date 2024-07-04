@@ -6,9 +6,8 @@
 #include "NotAMurder/Enums/CharacterType.h"
 #include "CharacterData.generated.h"
 
-/**
- * 
- */
+class ABaseWeapon;
+
 USTRUCT(BlueprintType)
 struct FCharacterData
 {
@@ -26,5 +25,9 @@ struct FCharacterData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	ECharacterType CharacterType;
 
-	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None){}
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	TSubclassOf<ABaseWeapon> Weapon;
+	
+
+	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None), Weapon(nullptr){}
 };

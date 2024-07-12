@@ -74,3 +74,8 @@ void ABaseCharacter::SetCharacterData_Implementation(const FCharacterData& NewDa
 	OriginalMovementSpeed = CharacterData.MovementSpeed;
 }
 
+ECharacterType ABaseCharacter::GetCharacterType_Implementation()
+{
+	return CharacterData.CharacterType;
+}
+

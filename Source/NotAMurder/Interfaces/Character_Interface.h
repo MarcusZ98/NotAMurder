@@ -31,4 +31,8 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Character")
 	void SetCharacterData(const FCharacterData& NewData);
 	virtual void SetCharacterData_Implementation(const FCharacterData& NewData) = 0;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Character")
+	ECharacterType GetCharacterType();
+	virtual ECharacterType GetCharacterType_Implementation() = 0;
 };

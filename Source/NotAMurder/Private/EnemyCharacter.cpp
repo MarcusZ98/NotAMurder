@@ -43,3 +43,7 @@ void AEnemyCharacter::SetEnemyData_Implementation(const FEnemyData& NewData)
 	EnemyData = NewData;
 }
 
+FEnemyData AEnemyCharacter::GetEnemyData_Implementation()
+{
+	return EnemyData;
+}

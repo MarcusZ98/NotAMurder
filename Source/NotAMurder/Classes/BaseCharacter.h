@@ -46,5 +46,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
 	virtual void SetCharacterData_Implementation(const FCharacterData& NewData) override;
-	
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	virtual ECharacterType GetCharacterType_Implementation() override;
 };

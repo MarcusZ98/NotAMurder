@@ -38,4 +38,8 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Enemy")
 	void SetEnemyData(const FEnemyData& NewData);
 	virtual void SetEnemyData_Implementation(const FEnemyData& NewData) = 0;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Enemy")
+	FEnemyData GetEnemyData();
+	virtual FEnemyData GetEnemyData_Implementation() = 0;
 };

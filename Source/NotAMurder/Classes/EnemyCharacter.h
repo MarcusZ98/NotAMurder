@@ -46,5 +46,8 @@ public:
 	virtual void TakeDamage_Implementation(float Damage) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	virtual void SetEnemyData_Implementation(const FEnemyData& NewData) override;	
+	virtual void SetEnemyData_Implementation(const FEnemyData& NewData) override;
+
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+	virtual FEnemyData GetEnemyData_Implementation() override;
 };

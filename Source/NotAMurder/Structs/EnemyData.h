@@ -17,10 +17,7 @@ struct FEnemyData
 	float DamageMultiplier;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float DamagePerShot;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	int32 PointsWorth;
 
-	FEnemyData(): DamageMultiplier(1.0f), PointsWorth(1000), DamagePerShot(25){}
+	FEnemyData(): DamageMultiplier(1.0f), PointsWorth(1000){}
 };

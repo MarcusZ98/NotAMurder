@@ -27,7 +27,20 @@ struct FCharacterData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	TSubclassOf<ABaseWeapon> Weapon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	ABaseWeapon* WeaponInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float DamageMultiplier;
 	
 
-	FCharacterData(): MaxHealth(100.0f), CurrentHealth(100.0f), MovementSpeed(700.0f), CharacterType(ECharacterType::None), Weapon(nullptr){}
+	FCharacterData():
+	MaxHealth(100.0f),
+	CurrentHealth(MaxHealth),
+	MovementSpeed(700.0f),
+	CharacterType(ECharacterType::None),
+	Weapon(nullptr),
+	WeaponInstance(nullptr),
+	DamageMultiplier(1.0) {}
 };

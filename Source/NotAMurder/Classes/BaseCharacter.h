@@ -26,6 +26,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	USceneComponent* ShootStartLocation;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float GetOriginalSpeed_Implementation() override;
@@ -49,4 +52,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
 	virtual ECharacterType GetCharacterType_Implementation() override;
+
+	UFUNCTION()
+	void EquipWeapon();
+	
 };

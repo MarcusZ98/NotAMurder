@@ -29,9 +29,6 @@ class NOTAMURDER_API AEnemyCharacter : public ABaseCharacter, public IEnemy_Inte
 
 public:
 	AEnemyCharacter();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
-	UStaticMeshComponent* ShootStartLocation;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	FEnemyData EnemyData;

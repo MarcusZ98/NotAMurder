@@ -2,6 +2,7 @@
 
 
 #include "BaseCharacter.h"
+#include "BaseWeapon.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -9,6 +10,9 @@ ABaseCharacter::ABaseCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	CharacterData.CharacterType = ECharacterType::None;
+
+	ShootStartLocation = CreateDefaultSubobject<USceneComponent>(TEXT("ShootStartLocation"));
+	ShootStartLocation->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -16,6 +20,9 @@ void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	OriginalMovementSpeed = CharacterData.MovementSpeed;
+	EquipWeapon();
+
+	CharacterData.CurrentHealth = CharacterData.MaxHealth;
 }
 
 // Called every frame
@@ -77,5 +84,14 @@ void ABaseCharacter::SetCharacterData_Implementation(const FCharacterData& NewDa
 ECharacterType ABaseCharacter::GetCharacterType_Implementation()
 {
 	return CharacterData.CharacterType;
+}
+
+void ABaseCharacter::EquipWeapon()
+{
+	if (CharacterData.Weapon)
+	{
+		CharacterData.WeaponInstance = GetWorld()->SpawnActor<ABaseWeapon>(CharacterData.Weapon, GetActorLocation(), GetActorRotation());
+		CharacterData.WeaponInstance->AttachToComponent(ShootStartLocation, FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
 }
 

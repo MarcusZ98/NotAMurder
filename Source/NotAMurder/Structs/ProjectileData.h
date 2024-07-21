@@ -19,15 +19,12 @@ struct FProjectileData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	UNiagaraSystem* ImpactFX;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float ProjectileSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float ProjectileLife;
 
 	
 
-	FProjectileData(): ProjectileFX(), ImpactFX(), ProjectileSpeed(1000.0f), ProjectileLife(1.0f) {}
+	FProjectileData(): ProjectileFX(), ImpactFX(), ProjectileLife(1.0f) {}
 };
 

@@ -22,5 +22,8 @@ struct FWeaponData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Attributes")
 	TSubclassOf<ABaseProjectile> Projectile;
 
-	FWeaponData(): DamagePerShot(10), FireRate(0.1f), Projectile(nullptr) {}
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float ProjectileSpeed;
+
+	FWeaponData(): DamagePerShot(10), FireRate(0.1f), Projectile(nullptr), ProjectileSpeed(1000) {}
 };

@@ -28,5 +28,6 @@ void ABaseWeapon::Tick(float DeltaTime)
 void ABaseWeapon::FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector)
 {
 	// This is a virtual function that will be overridden by the child classes
+
 }
 

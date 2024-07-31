@@ -22,9 +22,11 @@ private:
 	void SetUpPlayerCharacter();
 
 	UFUNCTION()
-	void SetUpEnemyCharacters();	
+	void SetUpEnemyCharacters();
+	
 	//Blueprint properties
 public:
+	
 	UPROPERTY(BlueprintReadWrite, Category = "Custom")
 	float CurrentDistanceAlongSpline = 0;
 
@@ -74,7 +76,7 @@ public:
 	APlayerCharacter* PlayerCharacter;
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Custom",
-	meta = (EditCondition = "CharacterType == ECharacterType::Player", EditConditionHides))
+	meta = (EditCondition = "CharacterType == ECharacterType::Player", EditConditionHides, ClampMin = 0))
 	int32 SpawnIndex = 0; 
 
 	// Enemy properties
@@ -83,20 +85,27 @@ public:
 		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	void SavePositions();
 	
+	UFUNCTION(CallInEditor, Category = "Custom",
+	meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+	void LoadPositions();
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom", meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+	TArray<FVector> SavedEnemyPositions = TArray<FVector>();
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
 		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	TSubclassOf<AEnemyCharacter> EnemyClass = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+	UPROPERTY(BlueprintReadWrite, Category = "Custom",
 		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	AActor* EnemyParent = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides, ClampMin = 1))
 	int32 GroupSize = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides, ClampMin = 1))
 	float DistanceBetweenEnemies = 150;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
@@ -104,7 +113,7 @@ public:
 	bool bOverrideEnemyData = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+		meta = (EditCondition = "bOverrideEnemyData", EditConditionHides))
 	FEnemyData OverriddenEnemyData;
 	
 };

@@ -32,7 +32,7 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	FEnemyData EnemyData;
-
+	
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	virtual void KillEnemy_Implementation() override;
 

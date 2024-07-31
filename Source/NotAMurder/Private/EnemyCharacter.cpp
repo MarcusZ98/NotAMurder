@@ -33,3 +33,4 @@ FEnemyData AEnemyCharacter::GetEnemyData_Implementation()
 {
 	return EnemyData;
 }
+

@@ -16,20 +16,39 @@ UCLASS()
 class NOTAMURDER_API ASplinePath : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	ASplinePath();
 
+private:
+	UFUNCTION()
+	void SetUpPlayerCharacter();
+
+	UFUNCTION()
+	void SetUpEnemyCharacters();	
+	//Blueprint properties
+public:
+	UPROPERTY(BlueprintReadWrite, Category = "Custom")
+	float CurrentDistanceAlongSpline = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Custom")
+	float TotalSplineLength = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Custom")
+	TArray<UStaticMeshComponent*> EnemySpawningPositions;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Custom")
+	TArray<AEnemyCharacter*> EnemyCharacters;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+
+	ASplinePath();
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Spline component
+	
+	// Custom properties
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spline")
 	USplineComponent* SplineComponent;
 
@@ -41,43 +60,51 @@ public:
 	bool bOverrideCharacterData = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
-		meta = (EditCondition = "bOverrideCharacterData"))
+		meta = (EditCondition = "bOverrideCharacterData", EditConditionHides))
 	FCharacterData OverridenCharacterData;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Player",
-		meta = (EditCondition = "CharacterType == ECharacterType::Player"),
-		meta = (ToolTip = "Add the player character class here"))
+	// Player properties
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Player", EditConditionHides, ToolTip = "Add the player character class here"))
 	AActor* PlayerParent = nullptr;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Custom|Player",
-		meta = (EditCondition = "CharacterType == ECharacterType::Player"))
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Custom",
+	meta = (EditCondition = "CharacterType == ECharacterType::Player", EditConditionHides))
 	APlayerCharacter* PlayerCharacter;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
-		meta = (ToolTip = "Add the enemy character class here"))
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Custom",
+	meta = (EditCondition = "CharacterType == ECharacterType::Player", EditConditionHides))
+	int32 SpawnIndex = 0; 
+
+	// Enemy properties
+
+	UFUNCTION(CallInEditor, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
+	void SavePositions();
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	TSubclassOf<AEnemyCharacter> EnemyClass = nullptr;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	AActor* EnemyParent = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	int32 GroupSize = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
-		meta = (ToolTip = "Adjust the distance between enemies in the group"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	float DistanceBetweenEnemies = 150;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "CharacterType == ECharacterType::Enemy"),
-		meta = (ToolTip = "Overrides the enemy data set in the enemy class"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	bool bOverrideEnemyData = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom|Enemy",
-		meta = (EditCondition = "bOverrideEnemyData"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom",
+		meta = (EditCondition = "CharacterType == ECharacterType::Enemy", EditConditionHides))
 	FEnemyData OverriddenEnemyData;
 	
 };

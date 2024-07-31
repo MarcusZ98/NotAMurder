@@ -13,6 +13,19 @@ ASplinePath::ASplinePath()
 	// Create and initialize the spline component
 	SplineComponent = CreateDefaultSubobject<USplineComponent>(TEXT("SplineComponent"));
 	RootComponent = SplineComponent; // Set the spline component as the root component
+
+	TotalSplineLength = SplineComponent->GetSplineLength();
+
+	switch (CharacterType)
+	{
+		case ECharacterType::None:
+			break;
+		case ECharacterType::Player:
+			SetUpPlayerCharacter();
+			break;
+		case ECharacterType::Enemy:
+			break;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -27,4 +40,19 @@ void ASplinePath::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ASplinePath::SetUpPlayerCharacter()
+{
+	PlayerParent->SetActorTransform(SplineComponent->GetTransformAtSplinePoint(SpawnIndex, ESplineCoordinateSpace::World));
+}
+
+void ASplinePath::SetUpEnemyCharacters()
+{
+	
+}
+
+void ASplinePath::SavePositions()
+{
+	
 }

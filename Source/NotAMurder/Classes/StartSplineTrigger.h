@@ -25,6 +25,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Custom")
+	TArray<ASplinePath*> SplinePathsToStart;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
 	UBoxComponent* CollisionBox;
 };

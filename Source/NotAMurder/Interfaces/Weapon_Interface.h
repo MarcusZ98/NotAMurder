@@ -25,7 +25,7 @@ class NOTAMURDER_API IWeaponInterface
 public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Weapon")
-	void FireWeapon(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector);
-	virtual void FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector) = 0;
+	void FireWeapon(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector,USceneComponent* HitTarget);
+	virtual void FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector, USceneComponent* HitTarget) = 0;
 
 };

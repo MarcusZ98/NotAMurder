@@ -30,6 +30,6 @@ public:
 
 	
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	virtual void FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector) override;
+	virtual void FireWeapon_Implementation(ABaseCharacter* OwnerOfWeapon, const FVector& StartLocation, const FVector& ForwardVector, USceneComponent* HitTarget) override;
 
 };

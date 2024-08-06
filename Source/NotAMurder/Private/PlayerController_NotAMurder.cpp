@@ -7,6 +7,7 @@
 
 
 
+
 APlayerController_NotAMurder::APlayerController_NotAMurder()
 {
 	bShouldPerformFullTickWhenPaused = true;
@@ -45,6 +46,7 @@ void APlayerController_NotAMurder::TogglePauseMenu()
 			{
 				PauseMenu->RemoveFromParent();
 				PauseMenu = nullptr;
+				CurrentMouseCursor = EMouseCursor::Default;
 			}
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Unpaused"));
 		}
@@ -57,6 +59,8 @@ void APlayerController_NotAMurder::TogglePauseMenu()
 				if (PauseMenu)
 				{
 					PauseMenu->AddToViewport();
+					CurrentMouseCursor = EMouseCursor::Hand;
+					
 				}
 			}
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Paused"));

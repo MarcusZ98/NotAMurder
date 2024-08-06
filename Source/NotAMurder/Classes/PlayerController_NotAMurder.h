@@ -15,6 +15,26 @@ class NOTAMURDER_API APlayerController_NotAMurder : public APlayerController
 	GENERATED_BODY()
 
 public:
-	virtual void SetupInputComponent() override;
+
+	APlayerController_NotAMurder();
 	
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	void TogglePauseMenu();
+
+	virtual void BeginPlay() override;
+
+protected:
+
+	UFUNCTION()
+	virtual void SetupInputComponent() override;
+
+private:
+	UPROPERTY()
+	TSubclassOf<UUserWidget> PauseMenuClass;
+
+	UPROPERTY()
+	UUserWidget* PauseMenu;
+
+	UFUNCTION()
+	void CreatePauseMenu();
 };

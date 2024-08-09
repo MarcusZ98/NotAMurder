@@ -32,6 +32,12 @@ struct FCharacterData
 	ABaseWeapon* WeaponInstance;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	TSubclassOf<ABaseWeapon> SecondaryWeapon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	ABaseWeapon* SecondaryWeaponInstance;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float DamageMultiplier;
 	
 

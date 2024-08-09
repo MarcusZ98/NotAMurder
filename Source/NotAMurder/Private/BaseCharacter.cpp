@@ -13,6 +13,9 @@ ABaseCharacter::ABaseCharacter()
 
 	ShootStartLocation = CreateDefaultSubobject<USceneComponent>(TEXT("ShootStartLocation"));
 	ShootStartLocation->SetupAttachment(RootComponent);
+
+	SecondaryWeaponLocation = CreateDefaultSubobject<USceneComponent>(TEXT("SecondaryWeaponLocation"));
+	SecondaryWeaponLocation->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -92,6 +95,11 @@ void ABaseCharacter::EquipWeapon()
 	{
 		CharacterData.WeaponInstance = GetWorld()->SpawnActor<ABaseWeapon>(CharacterData.Weapon, GetActorLocation(), GetActorRotation());
 		CharacterData.WeaponInstance->AttachToComponent(ShootStartLocation, FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
+	if(CharacterData.SecondaryWeapon)
+	{
+		CharacterData.SecondaryWeaponInstance = GetWorld()->SpawnActor<ABaseWeapon>(CharacterData.SecondaryWeapon, GetActorLocation(),GetActorRotation());
+		CharacterData.SecondaryWeaponInstance->AttachToComponent(SecondaryWeaponLocation,FAttachmentTransformRules::SnapToTargetIncludingScale);
 	}
 }
 

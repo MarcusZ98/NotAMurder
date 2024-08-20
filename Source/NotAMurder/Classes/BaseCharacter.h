@@ -55,7 +55,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Character")
 	virtual ECharacterType GetCharacterType_Implementation() override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void EquipWeapon();
 	
 };

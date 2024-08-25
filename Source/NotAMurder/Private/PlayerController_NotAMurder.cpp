@@ -20,7 +20,7 @@ void APlayerController_NotAMurder::BeginPlay()
     PauseMenuClass = StaticLoadClass(UUserWidget::StaticClass(), nullptr, TEXT("/Game/NotAMurder/Blueprints/Widgets/WBP_PauseScreen.WBP_PauseScreen_C"));
 	if (PauseMenuClass)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Widget Successfully Found"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Widget Successfully Found"));
 	}
 }
 
@@ -48,7 +48,7 @@ void APlayerController_NotAMurder::TogglePauseMenu()
 				PauseMenu = nullptr;
 				CurrentMouseCursor = EMouseCursor::Default;
 			}
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Unpaused"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Unpaused"));
 		}
 		else
 		{
@@ -63,7 +63,7 @@ void APlayerController_NotAMurder::TogglePauseMenu()
 					
 				}
 			}
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Paused"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Game Paused"));
 		}
 
 

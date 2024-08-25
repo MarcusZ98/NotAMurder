@@ -16,7 +16,19 @@ class NOTAMURDER_API UGI_NotAMurder : public UGameInstance
 
 public:
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Level")
-	FName DesiredLevelName;
+	///////////////////// Variables for the settings ///////////////////////
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	float Sensitivity = 20.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	int32 TextureQuality = 1;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	int32 ShadowQuality = 1;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
+	int32 ViewDistance = 1;
+	
+	
 	
 };

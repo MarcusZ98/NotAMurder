@@ -13,5 +13,7 @@ UCLASS()
 class NOTAMURDER_API ANotAMurderGameState : public AGameStateBase
 {
 	GENERATED_BODY()
+
+	virtual void BeginPlay() override;
 	
 };

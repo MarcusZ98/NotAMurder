@@ -29,8 +29,8 @@ void ANotAMurderGameState::BeginPlay()
 
 		//Set the view distance
 		UserSettings->SetViewDistanceQuality(GameInstance->ViewDistance);
-		FString ShadowQualityString = FString::Printf(TEXT("Shadow Quality: %d"), GameInstance->ShadowQuality);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, ShadowQualityString);
+		//FString ShadowQualityString = FString::Printf(TEXT("Shadow Quality: %d"), GameInstance->ShadowQuality);
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, ShadowQualityString);
 
 	}
 }

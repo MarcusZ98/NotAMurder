@@ -28,7 +28,4 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
 	int32 ViewDistance = 1;
-	
-	
-	
 };

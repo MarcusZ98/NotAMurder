@@ -20,12 +20,4 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
 	float Sensitivity = 20.0f;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
-	int32 TextureQuality = 1;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
-	int32 ShadowQuality = 1;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Settings")
-	int32 ViewDistance = 1;
 };

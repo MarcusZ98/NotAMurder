@@ -31,10 +31,7 @@ protected:
 private:
 	UPROPERTY()
 	TSubclassOf<UUserWidget> PauseMenuClass;
-
+	
 	UPROPERTY()
 	UUserWidget* PauseMenu;
-
-	UFUNCTION()
-	void CreatePauseMenu();
 };

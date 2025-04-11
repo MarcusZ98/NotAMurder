@@ -8,6 +8,8 @@ In Not A Murder, you play as a crow flying through carefully designed levels on 
 
 This project was not only a fun creative exercise but also an opportunity to explore more advanced Unreal systems such as spline-based movement, modular enemy behavior, custom UI frameworks, and save/load systems.
 
+---
+
 ## Features
 ### Rail-Shooter Gameplay
 - Play as a crow locked to a spline-based path through the level.
@@ -34,6 +36,8 @@ This project was not only a fun creative exercise but also an opportunity to exp
 
 - Menus built to be modular and reusable across different screens.
 
+---
+
 ## Team  
 
 | Role        | Name               | Focus Area                          |
@@ -49,6 +53,8 @@ This project was not only a fun creative exercise but also an opportunity to exp
 
 - Blueprint Scripting (for visual logic & editor tooling)
 
+---
+
 ## Development Focus
 This project was designed as a learning experience. While we aimed to make a fun and playable prototype, the real goal was to:
 
@@ -59,6 +65,8 @@ This project was designed as a learning experience. While we aimed to make a fun
 - Collaborate in a small cross-disciplinary team.
 
 - Build an understanding of good programming structure and game architecture in UE5.
+
+---
 
 ## Running The Project
 1. Clone the repository.

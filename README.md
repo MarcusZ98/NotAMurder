@@ -77,5 +77,3 @@ This project was designed as a learning experience. While we aimed to make a fun
 
 4. Play the game in-editor.
 
-## Acknowledgements
-Special thanks to our teachers, classmates, and the Unreal Engine documentation for helping us out along the way.
